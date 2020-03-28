@@ -7,11 +7,11 @@ export default class Article extends Component {
   }
 
   render() {
-    const { title } = this.props
+    const { title, image } = this.props
     return (
       <article className="article-item" id="article-template">
         <div className="image-wrap">
-          <img src="assets/images/paisaje.jpg" alt="Paisaje" />
+          <img src={image} alt={title} />
         </div>
 
         <h2>{title}</h2>

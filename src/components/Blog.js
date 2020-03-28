@@ -2,11 +2,28 @@ import React, { Component } from 'react'
 import Article from './Article'
 import Slider from './Slider'
 import Sidebar from './Sidebar'
+import axios from 'axios'
 
 export default class Blog extends Component {
 
   state = {
-    favorito: ''
+    favorito: '',
+    articles: {},
+    status: ''
+  }
+
+  componentWillMount(){
+    this.getArticles();
+  }
+
+  getArticles = () => {
+    axios.get("http://localhost:3900/api/articles")
+    .then(res => {    
+      this.setState({
+        articles: res.data.articles,
+        status: 'success'
+      })      
+    })
   }
 
   articleFavorite = (m) => {
@@ -27,7 +44,15 @@ export default class Blog extends Component {
         <div className="center">
           <section id="content">           
             <div className="articles">
-              <Article title="titulo de prueba" addFavorite={this.articleFavorite} />
+              
+              {this.state.status == "success" &&
+                this.state.articles.map((article, i) => {
+                  return (
+                    <Article key={i} title={article.title} image={article.image} addFavorite={this.articleFavorite} />
+                  )
+                })
+              }
+             
             </div>
           </section>
           <Sidebar 
