@@ -2,10 +2,14 @@ import React, { Component } from 'react'
 
 export default class Slider extends Component {
   render() {
+    const { title, btn, size } = this.props
     return (
-      <div id="slider" class="slider-big ">
-        <h1>Bienvenido a Mi Blog pana</h1>
-        <a href="blog.html" class="btn-white">Ir al blog</a>
+      <div id="slider" className={size}>
+        <h1>{title}</h1>
+        {btn &&
+          <a href="blog.html" className="btn-white">{btn}</a>
+        }
+        
       </div>
     )
   }

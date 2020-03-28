@@ -88,6 +88,10 @@ body {
   transition: 300ms all;
 }
 
+.active {
+  border-bottom: 2px solid #61dafb;
+}
+
 .clearfix {
   clear: both;
   float: none;
@@ -331,6 +335,11 @@ textarea {
   margin-top: 15px;
   margin-bottom: 0px;
   border: none;
+}
+
+.form-group {
+  margin: 10px;
+  text-align: left;
 }
 
 
