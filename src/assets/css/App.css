@@ -61,7 +61,7 @@ body {
 
 #menu ul {
   line-height: 85px;
-  width: 60%;
+  width: 100%;
   float: right;
 }
 
@@ -363,7 +363,7 @@ textarea {
   }
 }
 
-@media(max-width: 830px){
+@media(max-width: 930px){
   #logo {
     float: none;
     width: 240px;

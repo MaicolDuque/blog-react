@@ -36,6 +36,7 @@ export default class Formulario extends Component {
     this.setState({
       user: user
     })
+    
     console.log(this.nombreRef.current.value)
   }
 
@@ -50,15 +51,15 @@ export default class Formulario extends Component {
           <section id="content">
             <form action="" className="mid-form" onSubmit={this.recibirFormulario}>
               <div className="form-group">
-                <label for="nombre" >Nombre</label>
+                <label htmlFor="nombre" >Nombre</label>
                 <input type="text" name="nombre" id="" ref={this.nombreRef} />
               </div>
               <div className="form-group">
-                <label for="apellidos" >Apellidos</label>
+                <label htmlFor="apellidos" >Apellidos</label>
                 <input type="text" name="nombre" id="" ref={this.apellidosRef} />
               </div>
               <div className="form-group">
-                <label for="bio" >Biografia</label>
+                <label htmlFor="bio" >Biografia</label>
                 <textarea name="bio" id="" cols="30" rows="10" ref={this.bioRef}>
                 </textarea>
               </div>

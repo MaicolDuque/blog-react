@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import Home from './components/Home'
 import Blog from './components/Blog'
 import Favoritos from './components/Favorites'
+import Article from './components/Article'
 
 export default class Router extends Component {
   render() {
@@ -29,6 +30,11 @@ export default class Router extends Component {
                 path="/blog"
                 exact
                 component={Blog}
+              />
+               <Route
+                path="/blog/article/:id"
+                exact
+                component={Article}
               />
               <Route
                 path="/formulario"

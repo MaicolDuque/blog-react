@@ -1,0 +1,5 @@
+const global = {
+  url: "http://localhost:3900/api/"
+}
+
+export default global

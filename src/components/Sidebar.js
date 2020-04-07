@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 export default class Sidebar extends Component {
+
+  componentWillMount(){
+    
+  }
+
   render() {
     return (
       <aside id="sidebar">
@@ -8,7 +14,7 @@ export default class Sidebar extends Component {
           <div id="nav-blog" className="sidebar-item">
             <h3>Puede hacer esto..</h3>
             <a href="" className="btn btn-success">Crear articulo </a>
-          </div>          
+          </div>
         }
 
         <div id="search" className="sidebar-item">
@@ -19,7 +25,7 @@ export default class Sidebar extends Component {
             <input type="submit" value="Buscar" className="btn" />
           </form>
         </div>
-    </aside>
+      </aside>
     )
   }
 }

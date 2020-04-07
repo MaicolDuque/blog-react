@@ -3,21 +3,20 @@ import Article from './Article'
 import Slider from './Slider'
 import Sidebar from './Sidebar'
 import axios from 'axios'
+import global from '../global'
 
 export default class Blog extends Component {
 
   state = {
     favorito: '',
-    articles: {},
+    articles: [],
     status: ''
   }
 
-  componentWillMount(){
-    this.getArticles();
-  }
-
+  url = global.url
+  
   getArticles = () => {
-    axios.get("http://localhost:3900/api/articles")
+    axios.get(`${this.url}articles`)
     .then(res => {    
       this.setState({
         articles: res.data.articles,
@@ -25,6 +24,12 @@ export default class Blog extends Component {
       })      
     })
   }
+
+  componentWillMount(){
+    this.getArticles();
+  }
+
+  
 
   articleFavorite = (m) => {
     console.log("Aca mijo.." + m)
@@ -34,7 +39,26 @@ export default class Blog extends Component {
     })
 
   }
-  render() {    
+  render() {  
+    let articles;
+    if(this.state.articles.length > 0){
+      articles = (
+        this.state.articles.map((article, i) => {
+          return (
+            <Article key={i} date={article.date} title={article.title} id={article._id} image={article.image}  addFavorite={this.articleFavorite} />
+          )
+        })
+      )
+    }else if(this.state.articles.length === 0 && this.state.status === 'success'){
+      articles = (
+        <h2>No hay articulos para mostrar!</h2>
+      )
+    }else{
+      articles = (
+        <h2>Cargando...</h2>
+      )
+    }
+  
     return (
       <div>
         <Slider
@@ -45,13 +69,7 @@ export default class Blog extends Component {
           <section id="content">           
             <div className="articles">
               
-              {this.state.status == "success" &&
-                this.state.articles.map((article, i) => {
-                  return (
-                    <Article key={i} title={article.title} image={article.image} addFavorite={this.articleFavorite} />
-                  )
-                })
-              }
+              {articles}
              
             </div>
           </section>
